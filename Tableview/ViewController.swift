@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,10 +19,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        var identifier = ""
+        switch indexPath.row {
+        case 0:
+            identifier = "Cell1"
+        case 1:
+            identifier = "Cell2"
+        case 2:
+            identifier = "Cell3"
+        case 3:
+            identifier = "Cell4"
+        default:
+            identifier = "Cell5"
+        }
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        if identifier != "Cell5"{
+            cell.textLabel?.text = "text1"
+            cell.detailTextLabel?.text = "text2"
+        }else {
+            cell.textLabel?.text = "aaaa"
+        }
         return cell
     }
 
 
 }
-
